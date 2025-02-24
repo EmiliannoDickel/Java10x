@@ -20,6 +20,7 @@ public class Usuario {
 
     private String nome;
 
+    @Column(unique = true) //faco com que o email seja unico
     private String email;
 
     private int idade;
@@ -27,7 +28,5 @@ public class Usuario {
     @ManyToOne //quero que na tabela do usuario, tenha uma unica permissao
     @JoinColumn (name = "permissao_id") //juntar as duas colunas com chave estrangeira
     private Permissoes permissoes;
-
-
 
 }
