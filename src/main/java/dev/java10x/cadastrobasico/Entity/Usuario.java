@@ -1,11 +1,9 @@
-package Entity;
+package dev.java10x.cadastrobasico.Entity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
-import java.util.List;
 
 @Entity //transforma uma classe em entity no Banco de Dados
 @Getter

@@ -1,4 +1,4 @@
-package Entity;
+package dev.java10x.cadastrobasico.Entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
