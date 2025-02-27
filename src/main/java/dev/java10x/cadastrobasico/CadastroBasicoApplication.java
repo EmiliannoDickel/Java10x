@@ -14,10 +14,6 @@ public class CadastroBasicoApplication {
 		String dbUsername = dotenv.get("DATABASE_USERNAME");
 		String dbPassword = dotenv.get("DATABASE_PASSWORD");
 
-		System.out.println("DATABASE_URL: " + dbUrl);
-		System.out.println("DATABASE_USERNAME: " + dbUsername);
-		System.out.println("DATABASE_PASSWORD: " + dbPassword);
-
 	}
 
 }
