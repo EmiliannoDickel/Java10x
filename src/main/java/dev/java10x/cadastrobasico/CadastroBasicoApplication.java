@@ -10,8 +10,13 @@ public class CadastroBasicoApplication {
 
 		Dotenv dotenv = Dotenv.load();
 		SpringApplication.run(CadastroBasicoApplication.class, args);
+		String dbUrl = dotenv.get("DATABASE_URL");
+		String dbUsername = dotenv.get("DATABASE_USERNAME");
+		String dbPassword = dotenv.get("DATABASE_PASSWORD");
 
-
+		System.out.println("DATABASE_URL: " + dbUrl);
+		System.out.println("DATABASE_USERNAME: " + dbUsername);
+		System.out.println("DATABASE_PASSWORD: " + dbPassword);
 
 	}
 
