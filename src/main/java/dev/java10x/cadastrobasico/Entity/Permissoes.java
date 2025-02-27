@@ -1,5 +1,6 @@
 package dev.java10x.cadastrobasico.Entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -23,5 +24,6 @@ public class Permissoes {
     private String permissao;
 
     @OneToMany (mappedBy = "permissoes")//1 permissao para varios usuarios e mapear ela na tabela usuario.
+    @JsonIgnore
     private List<Usuario> usuario;
 }
