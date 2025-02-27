@@ -1,6 +1,7 @@
 package dev.java10x.cadastrobasico.Service;
 
 import dev.java10x.cadastrobasico.Entity.Permissoes;
+import dev.java10x.cadastrobasico.Entity.Usuario;
 import dev.java10x.cadastrobasico.Repository.PermissoesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -39,9 +40,15 @@ public class PermissoesService {
     }
 
     //Alterar permissao
-    public Permissoes atualizarPermissao(Permissoes permissoes) {
-        return permissoesRepository.save(permissoes);
+    public Permissoes atualizarPermissao(Long id, Permissoes permissaoAtualizada) {
+        if (permissoesRepository.existsById(id)) {
+            permissaoAtualizada.setId(id);
+            return permissoesRepository.save(permissaoAtualizada);
+        } else {
+            return null;
+        }
     }
+
 
 
 
