@@ -41,8 +41,13 @@ public class UsuarioService {
     }
 
     //Alterar Usuario
-    public Usuario atualizarUsuario(Usuario usuario) {
-        return usuarioRepository.save(usuario);
+    public Usuario atualizarUsuario(Long id, Usuario usuarioAtualizado) {
+        if (usuarioRepository.existsById(id)) {
+            usuarioAtualizado.setId(id);
+            return usuarioRepository.save(usuarioAtualizado);
+        } else {
+            return null;
+        }
     }
 
 
