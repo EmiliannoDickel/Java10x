@@ -14,7 +14,7 @@ public class PermissoesService {
     private PermissoesRepository permissoesRepository;
 
     //Pegar Permissoes
-    public List<Permissoes> pegarPermissao() {
+    public List<Permissoes> pegarPermissoes() {
         return permissoesRepository.findAll();
     }
 
