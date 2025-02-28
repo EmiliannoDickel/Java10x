@@ -1,6 +1,8 @@
 package dev.java10x.cadastrobasico.Service;
 
 import dev.java10x.cadastrobasico.Entity.Usuario;
+import dev.java10x.cadastrobasico.Entity.UsuarioDTO;
+import dev.java10x.cadastrobasico.Entity.UsuarioMapper;
 import dev.java10x.cadastrobasico.Repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,6 +16,13 @@ public class UsuarioService {
     @Autowired
     private UsuarioRepository usuarioRepository;
 
+    private final UsuarioMapper usuarioMapper;
+
+    public UsuarioService(UsuarioRepository usuarioRepository, UsuarioMapper usuarioMapper) {
+        this.usuarioRepository = usuarioRepository;
+        this.usuarioMapper = usuarioMapper;
+    }
+
     //Pegar Todos Os Usuarios
     public List<Usuario> pegarUsuarios() {
         return usuarioRepository.findAll();
@@ -26,8 +35,10 @@ public class UsuarioService {
     }
 
     //Criar Usuario
-    public Usuario criarUsuario(Usuario usuario) {
-        return usuarioRepository.save(usuario);
+    public UsuarioDTO criarUsuario(UsuarioDTO usuarioDTO) {
+        Usuario usuario = usuarioMapper.map(usuarioDTO);
+        usuario = usuarioRepository.save(usuario);
+        return usuarioMapper.map(usuario);
     }
 
     //Deletar Todos Usuarios

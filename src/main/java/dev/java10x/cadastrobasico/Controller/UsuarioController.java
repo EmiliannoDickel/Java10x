@@ -1,6 +1,7 @@
 package dev.java10x.cadastrobasico.Controller;
 
 import dev.java10x.cadastrobasico.Entity.Usuario;
+import dev.java10x.cadastrobasico.Entity.UsuarioDTO;
 import dev.java10x.cadastrobasico.Service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -28,8 +29,8 @@ public class UsuarioController {
 
     //Criar Usuario
     @PostMapping("/new")
-    public Usuario criarUsuario (@RequestBody Usuario usuario) {
-        return usuarioService.criarUsuario(usuario);
+    public UsuarioDTO criarUsuario (@RequestBody UsuarioDTO usuarioDTO) {
+        return usuarioService.criarUsuario(usuarioDTO);
     }
 
     //Deletar Todos Usuarios
