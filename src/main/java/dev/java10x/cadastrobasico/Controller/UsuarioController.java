@@ -1,6 +1,7 @@
 package dev.java10x.cadastrobasico.Controller;
 
 import dev.java10x.cadastrobasico.Entity.Usuario;
+import dev.java10x.cadastrobasico.Entity.UsuarioDTO;
 import dev.java10x.cadastrobasico.Service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -16,20 +17,20 @@ public class UsuarioController {
 
     //Pegar Lista De Usuarios
     @GetMapping("/all")
-    public List<Usuario> pegarUsuarios () {
+    public List<UsuarioDTO> pegarUsuarios () {
         return usuarioService.pegarUsuarios();
     }
 
     //Pegar pelo ID
     @GetMapping("/{id}")
-    public Usuario pegarUsuarioId (@PathVariable Long id) {
+    public UsuarioDTO pegarUsuarioId (@PathVariable Long id) {
         return usuarioService.pegarUsuarioId(id);
     }
 
     //Criar Usuario
     @PostMapping("/new")
-    public Usuario criarUsuario (@RequestBody Usuario usuario) {
-        return usuarioService.criarUsuario(usuario);
+    public UsuarioDTO criarUsuario (@RequestBody UsuarioDTO usuarioDTO) {
+        return usuarioService.criarUsuario(usuarioDTO);
     }
 
     //Deletar Todos Usuarios
@@ -45,7 +46,7 @@ public class UsuarioController {
     }
 
     @PutMapping("/alterar/{id}")
-    public Usuario alterarUsuario (@PathVariable Long id, @RequestBody Usuario usuarioAtualizado ) {
+    public UsuarioDTO alterarUsuario (@PathVariable Long id, @RequestBody UsuarioDTO usuarioAtualizado ) {
         return usuarioService.atualizarUsuario(id, usuarioAtualizado);
     }
 

@@ -26,6 +26,16 @@ public class Usuario {
     @JoinColumn (name = "permissao_id") //juntar as duas colunas com chave estrangeira
     private Permissoes permissoes;
 
+    @Column (name = "senha")
+    private String senha;
+
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
 
     public Long getId() {
         return id;

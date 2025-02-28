@@ -1,7 +1,6 @@
 package dev.java10x.cadastrobasico.Controller;
 
 import dev.java10x.cadastrobasico.Entity.Permissoes;
-import dev.java10x.cadastrobasico.Entity.Usuario;
 import dev.java10x.cadastrobasico.Service.PermissoesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
