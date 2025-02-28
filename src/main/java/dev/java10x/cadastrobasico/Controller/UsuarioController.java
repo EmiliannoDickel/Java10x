@@ -17,13 +17,13 @@ public class UsuarioController {
 
     //Pegar Lista De Usuarios
     @GetMapping("/all")
-    public List<Usuario> pegarUsuarios () {
+    public List<UsuarioDTO> pegarUsuarios () {
         return usuarioService.pegarUsuarios();
     }
 
     //Pegar pelo ID
     @GetMapping("/{id}")
-    public Usuario pegarUsuarioId (@PathVariable Long id) {
+    public UsuarioDTO pegarUsuarioId (@PathVariable Long id) {
         return usuarioService.pegarUsuarioId(id);
     }
 
@@ -46,7 +46,7 @@ public class UsuarioController {
     }
 
     @PutMapping("/alterar/{id}")
-    public Usuario alterarUsuario (@PathVariable Long id, @RequestBody Usuario usuarioAtualizado ) {
+    public UsuarioDTO alterarUsuario (@PathVariable Long id, @RequestBody UsuarioDTO usuarioAtualizado ) {
         return usuarioService.atualizarUsuario(id, usuarioAtualizado);
     }
 
