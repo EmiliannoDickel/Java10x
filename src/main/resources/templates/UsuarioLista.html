@@ -146,8 +146,8 @@
         </td>
         <td>
             <!-- Botões de Ação -->
-            <a class="editar" th:href="@{/api/usuario/ui/listar/{id}(id=${usuario.id})}">Ver Detalhes</a>
-            <a class="editar" th:href="@{/api/usuario/ui/#/{id}(id=${usuario.id})}">Editar</a>
+            <a class="ver-detalhes" th:href="@{/api/usuario/ui/listar/{id}(id=${usuario.id})}">Ver Detalhes</a>
+            <a class="editar" th:href="@{/api/usuario/ui/editar/{id}(id=${usuario.id})}">Editar</a>
             <a class="deletar" th:href="@{/api/usuario/ui/{id}(id=${usuario.id})}">Deletar</a>
         </td>
     </tr>

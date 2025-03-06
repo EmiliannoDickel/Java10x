@@ -2,6 +2,8 @@ package dev.java10x.cadastrobasico.Controller;
 
 import dev.java10x.cadastrobasico.Entity.UsuarioDTO;
 import dev.java10x.cadastrobasico.Service.UsuarioService;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -57,5 +59,33 @@ public class UsuarioControllerUi { //criamos essa class mais para o uso experime
         redirectAttributes.addFlashAttribute("mensagem", "Usuário cadastrado com sucesso!");
         return "redirect:/api/usuario/ui/all";
     }
+
+    @PutMapping("/alterar/{id}")
+    public String alterarUsuario(@PathVariable Long id, @ModelAttribute UsuarioDTO usuarioAtualizado,
+                                 RedirectAttributes redirectAttributes, Model model) {
+        UsuarioDTO usuarioExistente = usuarioService.pegarUsuarioId(id);
+        if (usuarioExistente == null) {
+            redirectAttributes.addFlashAttribute("mensagem", "Usuário não encontrado!");
+            return "redirect:/api/usuario/ui/all"; // Redireciona para a lista de usuários
+        }
+        usuarioService.atualizarUsuario(id, usuarioAtualizado);
+        redirectAttributes.addFlashAttribute("mensagem", "Usuário atualizado com sucesso!");
+        return "redirect:/api/usuario/ui/all";
+    }
+
+
+    @GetMapping("/editar/{id}")
+    public String mostrarFormularioEditarUsuario(@PathVariable Long id, Model model) {
+        UsuarioDTO usuario = usuarioService.pegarUsuarioId(id);
+        if (usuario != null) {
+            model.addAttribute("usuario", usuario);  // Adiciona o objeto "usuario" ao modelo
+            return "alterarUsuario";
+        } else {
+            model.addAttribute("mensagem", "Usuário não encontrado");
+            return "UsuarioLista";
+        }
+    }
+
+
 
 }
