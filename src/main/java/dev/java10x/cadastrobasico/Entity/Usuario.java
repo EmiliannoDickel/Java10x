@@ -3,12 +3,14 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 
 @Entity //transforma uma classe em entity no Banco de Dados
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "tb_usuario") //boa prática colocar TB_
+@ToString(exclude = "permissoes")
 public class Usuario {
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY) // qual estratégia usar para lidar com ID, seja numeros aleatorio, manual ou sequencial
