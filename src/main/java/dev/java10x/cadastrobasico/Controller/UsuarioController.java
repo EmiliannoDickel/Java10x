@@ -15,7 +15,7 @@ import java.util.List;
 @RequestMapping("/api/usuario")
 public class UsuarioController {
 
-    @Autowired
+
     private UsuarioService usuarioService;
 
     //Pegar Lista De Usuarios

@@ -15,7 +15,7 @@ import java.util.stream.Collectors;
 public class UsuarioService {
 
     @Autowired
-    private UsuarioRepository usuarioRepository;
+    private final UsuarioRepository usuarioRepository;
 
     private final UsuarioMapper usuarioMapper;
 
