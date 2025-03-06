@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>Tabela de Usuários</title>
+    <style>
+        /* Resetando alguns estilos padrão */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+
+        h1#head {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            font-size: 50px;
+            color: green;
+            background: linear-gradient(135deg, #3498db, #8e44ad); /* Gradiente suave de cores */
+            -webkit-background-clip: text;
+            background-clip: text;
+            font-weight: bold;
+            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.2); /* Sombra suave no texto */
+            margin-bottom: 40px;
+            padding: 10px;
+            letter-spacing: 1px; /* Espaçamento entre as letras */
+            text-transform: uppercase; /* Deixa o título em maiúsculas */
+        }
+
+        /* Animação do título */
+        @keyframes bounce {
+            0% { transform: translateY(0); }
+            25% { transform: translateY(-10px); }
+            50% { transform: translateY(0); }
+            75% { transform: translateY(-10px); }
+            100% { transform: translateY(0); }
+        }
+
+        table {
+            width: 100%;
+            max-width: 1000px;
+            margin: 0 auto;
+            border-collapse: collapse;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+            border-radius: 8px;
+        }
+
+        thead {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        tbody tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        td {
+            color: #333;
+        }
+
+        /* Botões */
+        a {
+            display: inline-block;
+            padding: 8px 16px;
+            margin: 4px;
+            text-decoration: none;
+            border-radius: 5px;
+            color: white;
+            background-color: #4CAF50;
+            transition: background-color 0.3s;
+        }
+
+
+        /* Estilo do botão "Deletar" */
+        a.deletar {
+            background-color: #e74c3c;
+            color: white;
+            transition: background-color 0.3s ease;
+        }
+
+        a.deletar:hover {
+            background-color: #c0392b;
+        }
+
+        /* Estilo para o "Editar" - você pode adicionar depois */
+        a.editar {
+            background-color: #3498db;
+            color: white;
+            transition: background-color 0.3s ease;
+        }
+
+        a.editar:hover {
+            background-color: #2980b9;
+        }
+
+        /* Estilo da célula de Permissões */
+        td span {
+            font-style: italic;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+
+<h1 id="head">Lista de Usuários</h1>
+<a class="btn-adicionar" th:href="@{/api/usuario/ui/adicionar}">Adicionar Novo Usuário</a>
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Nome</th>
+        <th>Idade</th>
+        <th>Email</th>
+        <th>Senha</th>
+        <th>Permissão</th>
+        <th>Ações</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr th:each="usuario : ${usuarios}">
+        <td th:text="${usuario.id}"></td>
+        <td th:text="${usuario.nome}"></td>
+        <td th:text="${usuario.idade}"></td>
+        <td th:text="${usuario.email}"></td>
+        <td th:text="${usuario.senha}"></td>
+        <td>
+                <span th:if="${usuario.permissoes}">
+                    <span th:text="${usuario.permissoes.nome}"></span> Permissão:
+                    <span th:text="${usuario.permissoes.permissao}"></span>
+                </span>
+            <span th:if="${usuario.permissoes == null}">Sem Permissões</span>
+        </td>
+        <td>
+            <!-- Botões de Ação -->
+            <a class="editar" th:href="@{/api/usuario/ui/listar/{id}(id=${usuario.id})}">Ver Detalhes</a>
+            <a class="editar" th:href="@{/api/usuario/ui/#/{id}(id=${usuario.id})}">Editar</a>
+            <a class="deletar" th:href="@{/api/usuario/ui/{id}(id=${usuario.id})}">Deletar</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>

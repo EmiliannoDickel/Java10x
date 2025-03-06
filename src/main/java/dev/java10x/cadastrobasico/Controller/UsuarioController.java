@@ -16,7 +16,11 @@ import java.util.List;
 public class UsuarioController {
 
 
-    private UsuarioService usuarioService;
+    private final UsuarioService usuarioService;
+
+    public UsuarioController(UsuarioService usuarioService) {
+        this.usuarioService = usuarioService;
+    }
 
     //Pegar Lista De Usuarios
     @GetMapping("/all")

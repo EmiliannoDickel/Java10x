@@ -7,8 +7,8 @@ import lombok.ToString;
 
 
 @Entity //transforma uma classe em entity no Banco de Dados
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "tb_usuario") //boa prática colocar TB_
 @ToString(exclude = "permissoes")
 public class Usuario {
@@ -21,6 +21,7 @@ public class Usuario {
 
     @Column(unique = true) //faco com que o email seja unico
     private String email;
+
     @Column(name = "idade")
     private int idade;
 
@@ -30,6 +31,19 @@ public class Usuario {
 
     @Column (name = "senha")
     private String senha;
+
+//    public Usuario () {
+//
+//    }
+//
+//    public Usuario(Long id, String nome, String email, int idade, Permissoes permissoes, String senha) {
+//        this.id = id;
+//        this.nome = nome;
+//        this.email = email;
+//        this.idade = idade;
+//        this.permissoes = permissoes;
+//        this.senha = senha;
+//    }
 
     public String getSenha() {
         return senha;
@@ -78,4 +92,6 @@ public class Usuario {
     public void setPermissoes(Permissoes permissoes) {
         this.permissoes = permissoes;
     }
+
+
 }
